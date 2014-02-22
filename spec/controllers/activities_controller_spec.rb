@@ -23,4 +23,12 @@ describe ActivitiesController do
         to change{Activity.all.count}.by(1)
     end
   end
+
+  describe "GET #show" do
+    it "should be successful" do
+      @activity = create(:activity)
+      get :show, id: @activity.id.to_s
+      response.should be_successful
+    end
+  end
 end

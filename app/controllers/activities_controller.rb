@@ -6,6 +6,11 @@ class ActivitiesController < ApplicationController
     render json: @activities
   end
 
+  def show
+    @activity = Activity.find(params[:id])
+    render json: @activity
+  end
+
   def create
     if @activity = Activity.create(activity_params)
       render json: @activity
