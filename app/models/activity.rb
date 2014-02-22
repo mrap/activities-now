@@ -3,8 +3,8 @@ class Activity
   include Mongoid::Search
 
   field :title
-  has_and_belongs_to_many :tags
+  field :tags, default: []
 
-  search_in :title, :tags => :name
+  search_in :title, :tags
 
 end
