@@ -15,6 +15,7 @@ gem 'mongoid', github: 'mongoid/mongoid', tag: 'v4.0.0.beta1'
 gem 'moped', github: 'mongoid/moped', tag: 'v2.0.0.beta6'
 gem 'mongoid_search', github: 'mauriciozaffari/mongoid_search', branch: 'master'
 gem 'devise'
+gem 'pushmeup'
 
 
 # Location Gems
