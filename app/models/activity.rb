@@ -2,6 +2,6 @@ class Activity
   include Mongoid::Document
 
   field :title
-  field :keywords,  default: []
+  has_many :tags
 
 end
