@@ -20,4 +20,26 @@ describe Activity do
       @results.should include @tagged_activity
     end
   end
+
+  describe "can return nearby users" do
+    let(:coordinates) { { lat: 37.7716634, long: -122.4043235 } }
+    let(:nearby_activity_location) { create(:location, coordinates: coordinates) }
+    let(:activity) { create(:activity) }
+    let(:nearby_user_location) { create(:location, coordinates: coordinates ) }
+    let(:nearby_user) { create(:user) }
+    let(:far_location) { create(:location) }
+    let(:far_user) { create(:user) }
+
+    before do
+      activity.location = nearby_activity_location
+      nearby_user.location = nearby_user_location
+      far_user.location = far_location
+    end
+
+    it "should return nearby users" do
+      activity.nearby_users.should include nearby_user
+      activity.nearby_users.should_not include far_user
+    end
+  end
+
 end
