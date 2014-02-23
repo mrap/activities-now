@@ -2,5 +2,6 @@
 
 FactoryGirl.define do
   factory :activity do
+    sequence(:title) {|n| "Activity #{n}"}
   end
 end
