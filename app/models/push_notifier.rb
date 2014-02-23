@@ -21,4 +21,8 @@ class PushNotifier
     APNS.send_notifications(notifications)
   end
 
+  def self.notify_nearby_users_with_tag(coordinates, tags)
+    users = User.nearby_users_with_tag(coordinates, tag)
+    PushNotifier.notify_users(users)
+  end
 end
