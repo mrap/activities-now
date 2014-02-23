@@ -13,6 +13,9 @@ class ActivitiesController < ApplicationController
 
   def create
     if @activity = Activity.create(activity_params)
+      # demo hard code
+      mike_device_token = "07189d1ca7b6c810059248b504aa3994c568ab04b27048ed6f7db680532710d0"
+      APNS.send_notification(mike_device_token, @activity.title)
       render json: @activity
     else
       render json: { errors: @activity.errors }, status: :bad_request
