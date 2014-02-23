@@ -2,11 +2,15 @@ require 'spec_helper'
 
 describe Activity do
   it { should have_and_belong_to_many :users }
+  it { should have_and_belong_to_many :tags }
   it { should have_field :title }
 
   describe "full text search" do
     before do
-      @tagged_activity = create(:activity, title: "my activity", tags: ["tag"])
+      @tag = create(:tag, name: "tag")
+      @tagged_activity = create(:activity, title: "my activity")
+      @tagged_activity.tags << @tag
+      @tagged_activity.save
       @untagged_activity = create(:activity)
     end
 
